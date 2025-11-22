@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Employee Access Management</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Employee Access Management System</h1>
+
+    <div class="login-box" id="loginBox">
+      <h2>Login</h2>
+      <select id="roleSelect">
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
+      </select>
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" oninput="checkStrength()" />
+      <div id="strength">Strength: </div>
+      <button class="btn" onclick="login()">Login</button>
+    </div>
+
+    <div class="dashboard hidden" id="adminDashboard">
+      <h2>Admin Dashboard</h2>
+
+      <form id="employeeForm">
+        <input type="text" id="empName" placeholder="Name" required />
+        <input type="email" id="empEmail" placeholder="Email" required />
+        <input type="number" id="empSalary" placeholder="Salary" required />
+        <input type="number" id="empAge" placeholder="Age" required />
+        <input type="number" id="empAllowance" placeholder="Allowance" required />
+        <input type="number" id="empYears" placeholder="Years of Service" required />
+        <input type="number" id="empExperience" placeholder="Total Experience" required />
+        <button type="submit" class="btn add">Add Record</button>
+      </form>
+
+      <button class="btn show" onclick="showRecords()">Show All Records</button>
+      <div id="records" class="records-box"></div>
+
+      <h3>Activity Log</h3>
+      <pre id="logBox"></pre>
+      <button class="btn logout" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="dashboard hidden" id="userDashboard">
+      <h2>User Dashboard</h2>
+      <input type="text" id="searchUser" placeholder="Enter your username" />
+      <button class="btn" onclick="fetchUser()">View My Details</button>
+      <div id="userDetails"></div>
+      <button class="btn logout" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
